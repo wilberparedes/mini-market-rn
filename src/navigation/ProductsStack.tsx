@@ -9,7 +9,17 @@ const Stack = createNativeStackNavigator<ProductsStackParamList>();
 
 export const ProductsStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#2C2D5B',
+        },
+        headerTintColor: '#FFFFFF',
+        headerTitleStyle: {
+          fontWeight: '700',
+        },
+      }}
+    >
       <Stack.Screen
         name="Products"
         component={ProductsScreen}
