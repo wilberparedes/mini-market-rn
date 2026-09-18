@@ -166,14 +166,14 @@ Con fines educativos y de demostrar el conocimiento en la creación de Módulos 
 
 ## API
 
-Se utiliza Axios sobre `fetch` para centralizar la comunicación HTTP en un único cliente.
+Se utiliza Axios sobre _fetch_ para centralizar la comunicación HTTP en un único cliente.
 
 La decisión permite:
 
 - Configurar una URL base mediante variables de entorno.
 - Centralizar el manejo de errores HTTP.
 - Mantener una interfaz consistente para los servicios de API.
-- Utilizar `AbortController` para cancelar peticiones cuando corresponde.
+- Utilizar _AbortController_ para cancelar peticiones cuando corresponde.
 
 La capa de API está desacoplada de las pantallas y componentes
 
@@ -247,7 +247,11 @@ _useMemo_ se utilizó únicamente para cálculos derivados cuyo resultado puede 
 
 ### Video de demo
 
-![Video Demo](assets/304221.gif)
+<img
+  src="assets/304221.gif"
+  alt="Video Demo"
+  width="300"
+/>
 
 ### Splash
 
