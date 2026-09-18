@@ -1,97 +1,287 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Aplicación MiniMarket con React Native
 
-# Getting Started
+Aplicación para prueba técnica desarrollada en React Native CLI.
+La aplicación permite: consultar productos, buscar productos, filtrar por categoría, ver detalle de producto, añadir/eliminar de favorito
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Stack
 
-## Step 1: Start Metro
+- React Native CLI 0.81.6
+- React 19
+- TypeScript
+- React Navigation 7
+- TanStack Query
+- Zustand
+- MMKV
+- Axios
+- React Native Reanimated
+- Jest
+- React Native Testing Library
+- ESLint
+- Prettier
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Es necesario tener:
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- Node.js 20+
+- npm
+- React Native CLI
+- Android Studio + Android SDK para Android
+- Xcode para iOS
+- Ruby
+- CocoaPods
+- JDK compatible con React Native 0.81
 
-```sh
-# Using npm
-npm start
+## Instalación
 
-# OR using Yarn
+```bash
+#Clonar el repositorio:
+git clone https://github.com/wilberparedes/mini-market-rn.git
+
+cd MiniMarketRN
+
+
+# instalar dependencias
+npm install
+
+# Crear el archivo .env en la raíz:
 yarn start
 ```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
 
 ### Android
 
 ```sh
-# Using npm
-npm run android
+#Iniciar metro
+npm start
 
-# OR using Yarn
-yarn android
+#Correr android en otra terminal
+npm run android
 ```
 
 ### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
 ```sh
+#Instalar dependencias
+cd ios
 bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
 bundle exec pod install
+cd ..
+
+#Iniciar metro
+npm start
+
+#Correr ios en otra terminal
+npm run ios
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### Test
+
+Se utilizó _Jest_ + _React Native Testing Library_.
 
 ```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+#Para ejecutar test
+npm test
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+En esta ocación se realizaron test que cubren temas como: renderizado e interacción de productos, gestión de favoritos, comportamiento de la hook useProducts, entre otros.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Validar Calidad de código
 
-## Step 3: Modify your app
+```sh
+#Para ejecutar ESLint
+npm run lint
 
-Now that you have successfully run the app, let's make changes!
+#Para verificar formato
+npm run lint:format
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+#Para formatear código
+npm run format
+```
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Arquitectura
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+La aplicación se desarrolló bajo una arquitectura, por capas y separando las responsabilidades entre:
 
-## Congratulations! :tada:
+- api: Cliente HTTP y servicios API.
+- components: Componentes reutilizables.
+- config: Configuración general y variables de entorno.
+- domain: Modelos y tipos de dominio.
+- hooks: Hooks reutilizables.
+- navigation: Navegación y tipos.
+- screens: Pantallas.
+- storage: Persistencia local.
+- store: Estado global.
+- native: Módulos nativos.
+- utils: Funciones de utilizades reutilizables.
 
-You've successfully run and modified your React Native App. :partying_face:
+```sh
+#Para ejecutar ESLint
+npm run lint
 
-### Now what?
+#Para verificar formato
+npm run lint:format
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+#Para formatear código
+npm run format
+```
 
-# Troubleshooting
+## TypeScript
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+El proyecto se desarrolló 100% en TypeScript con su respectivo
 
-# Learn More
+```json
+"strict": true
+```
 
-To learn more about React Native, take a look at the following resources:
+## Estado
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Se utilizó _TanStack Query_ debido a las ventajas que ofrece a nivel del manejo de errores e interacción en la carga, exponiendo para así tener acceso facilmente a: Loading states, errores, caché, refetch, paginación/infinite scroll, cancelación de requests.
+
+### Global
+
+En este caso se utilizó _Zustand_ debido a que al tener un store no muy complejo y a lo rapido que se puede utilizar esta dependencia, nos ayuda a tener una buena configuración rápida, al no tener tratamiento muy complejo con el estado, era la mejor solución y la más rápida para este caso.
+
+### Persistencia
+
+Se utilizó _MMKV_ ya que en la actualidad es el que mejor se comporta, aunque en este caso se necesitó de configuraciones extras, debido a la versión de RN utilizada, tales como activar la nueva arquitectura de RN, instalar la versión exacta de react-native-nitro _(npm install react-native-nitro-modules@0.37.1 --save-exact)_
+
+## Navegación
+
+Se utilizó React Navigation 7 con:
+
+- Bottom Tab Navigator.
+- Native Stack Navigator anidado.
+  Los parámetros de navegación están tipados mediante TypeScript.
+
+```Javascript
+export type RootTabParamList = {
+  ProductsStack: undefined;
+  Favorites: undefined;
+};
+
+type Props = NativeStackScreenProps<ProductsStackParamList, 'Products'>;
+```
+
+## Módulos nativos
+
+Con fines educativos y de demostrar el conocimiento en la creación de Módulos nativos, por lo cual se construyó un pequeño módulo para el formateo de moneda. Estos módulos fueron implementados para Android/ios y se exponen mediante bridge por javascript.
+
+## API
+
+Se utiliza Axios sobre `fetch` para centralizar la comunicación HTTP en un único cliente.
+
+La decisión permite:
+
+- Configurar una URL base mediante variables de entorno.
+- Centralizar el manejo de errores HTTP.
+- Mantener una interfaz consistente para los servicios de API.
+- Utilizar `AbortController` para cancelar peticiones cuando corresponde.
+
+La capa de API está desacoplada de las pantallas y componentes
+
+## Manejo de errores
+
+Los errores de red se manejaron explícitamente desde la capa de API y se muestran estados apropiados en la interfaz.
+
+La aplicación contempló:
+
+- Loading.
+- Error.
+- Retry.
+- Empty states.
+- Cancelación de requests.
+
+También se incorporó un Error Boundary global para evitar que un error inesperado deje la aplicación sin una interfaz recuperable.
+
+### Rendimiento
+
+Se utilizó _FlatList_ para renderizar listas de productos y evitar montar todos los elementos simultáneamente
+
+Se implementó:
+
+- _keyExtractor_ estable basado en el ID del producto.
+- _initialNumToRender_.
+- _maxToRenderPerBatch_.
+- _windowSize_.
+- _removeClippedSubviews_.
+- Infinite scroll mediante _onEndReached_.
+
+Para las imágenes se utilizó la caché disponible en el componente _Image_ de React Native, que nos ayuda bastante bien con lo requerido y así evitamos descargas innecesarias cuando la imagen ya está disponible en caché.
+
+_React.memo_ se utilizó en componentes reutilizables de lista para evitar renders innecesarios cuando sus props no cambian.
+
+_useCallback_ se utilizó para mantener referencias estables en callbacks enviados a componentes y _FlatList_.
+
+_useMemo_ se utilizó únicamente para cálculos derivados cuyo resultado puede reutilizarse entre renders.
+
+## Funcionalidades principales
+
+### Productos
+
+- Listado mediante FlatList.
+- Infinite scroll.
+- Búsqueda con debounce.
+- Filtrado por categoría.
+- Pull to refresh.
+- Estados de loading/error.
+- Favoritos.
+- Optimización del renderizado.
+
+### Detalle
+
+- Información completa del producto.
+- Carrusel de imágenes.
+- Precio original.
+- Precio con descuento.
+- Rating.
+- Tags.
+- Gestión de favoritos.
+- Animaciones con Reanimated.
+
+### Favoritos
+
+- Persistencia local.
+- Estado reactivo.
+- Eliminación de favoritos.
+- Empty state.
+
+## Capturas
+
+### Video de demo
+
+![Video Demo](assets/304221.gif)
+
+### Splash
+
+![Splash](assets/1.jpg)
+
+### Productos
+
+![Productos](assets/2.jpg)
+
+### Categorías
+
+![Categorías](assets/3.jpg)
+
+### Detalle de Producto
+
+![Detalle de Producto](assets/4.jpg)
+
+### Guardado como favorito
+
+![Guardado como favorito](assets/5.jpg)
+
+## CI
+
+Se realizó una pequeña integración de GitHub Actions que incluye un workflow que hace:
+
+- Instalar dependencias.
+- Validar ESLint.
+- Verificar Prettier.
+- Ejecutar Test (Quality).
+
+## Extras
+
+También se implementó Skeleton, Accesibilidad
+
+## Autor
+
+Wilber Paredes :) 👍
