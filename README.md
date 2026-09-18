@@ -250,7 +250,7 @@ _useMemo_ se utilizó únicamente para cálculos derivados cuyo resultado puede 
 <img
   src="assets/304221.gif"
   alt="Video Demo"
-  width="300"
+  width="250"
 />
 
 ### Splash
