@@ -255,23 +255,51 @@ _useMemo_ se utilizó únicamente para cálculos derivados cuyo resultado puede 
 
 ### Splash
 
-![Splash](assets/1.jpg)
+<img
+  src="assets/1.jpg"
+  alt="Splash"
+  width="250"
+/>
 
 ### Productos
 
-![Productos](assets/2.jpg)
+<img
+  src="assets/2.jpg"
+  alt="Productos"
+  width="250"
+/>
 
 ### Categorías
 
-![Categorías](assets/3.jpg)
+<img
+  src="assets/3.jpg"
+  alt="Categorías"
+  width="250"
+/>
 
 ### Detalle de Producto
 
-![Detalle de Producto](assets/4.jpg)
+<img
+  src="assets/4.jpg"
+  alt="Detalle de Producto"
+  width="250"
+/>
 
 ### Guardado como favorito
 
-![Guardado como favorito](assets/5.jpg)
+<img
+  src="assets/5.jpg"
+  alt="Guardado como favorito"
+  width="250"
+/>
+
+### Listado de Favoritos
+
+<img
+  src="assets/6.jpg"
+  alt="Listado de Favoritos"
+  width="250"
+/>
 
 ## CI
 
