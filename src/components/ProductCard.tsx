@@ -99,9 +99,11 @@ export const ProductCard = memo(
               <Text style={styles.title} numberOfLines={2}>
                 {product.title}
               </Text>
-              <Text style={styles.originalPrice}>
-                ${product.price.toFixed(2)}
-              </Text>
+              {Math.round(product.discountPercentage) > 0 && (
+                <Text style={styles.originalPrice}>
+                  ${product.price.toFixed(2)}
+                </Text>
+              )}
 
               <Text style={styles.discountedPrice}>
                 ${discountedPrice.toFixed(2)}
@@ -139,6 +141,13 @@ export const ProductCard = memo(
               </Text>
             </Pressable>
           </Animated.View>
+          {Math.round(product.discountPercentage) > 0 && (
+            <View style={styles.discountBadge}>
+              <Text style={styles.discountedText}>
+                {Math.round(product.discountPercentage)}% OFF
+              </Text>
+            </View>
+          )}
         </View>
       </Animated.View>
     );
@@ -208,5 +217,18 @@ const styles = StyleSheet.create({
   },
   favoriteIconActive: {
     color: '#E53935',
+  },
+  discountBadge: {
+    position: 'absolute',
+    bottom: 16,
+    right: 16,
+    backgroundColor: '#E53935',
+    paddingHorizontal: 8,
+    paddingVertical: 5,
+    borderRadius: 8,
+  },
+  discountedText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
   },
 });

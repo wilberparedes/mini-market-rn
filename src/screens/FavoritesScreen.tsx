@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import { ProductCard } from '@components/ProductCard';
@@ -10,6 +10,11 @@ import { toFavoriteProduct } from '@utils/product.utils';
 export const FavoritesScreen = () => {
   const { favorites } = useFavoriteProducts();
   const toggleFavorite = useFavoriteStore((state) => state.toggleFavorite);
+  const loadFavorites = useFavoriteStore((state) => state.loadFavorites);
+
+  useEffect(() => {
+    loadFavorites();
+  }, [loadFavorites]);
 
   const handleRemoveFavorite = useCallback(
     (product: FavoriteProduct) => {

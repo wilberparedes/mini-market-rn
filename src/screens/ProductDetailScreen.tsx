@@ -277,13 +277,19 @@ export const ProductDetailScreen = ({ route }: Props) => {
         </View>
 
         <View style={styles.priceContainer}>
-          <Text style={styles.originalPrice}>{formatPrice(product.price)}</Text>
-          <Text style={styles.discountedPrice}>{formattedPrice}</Text>
-          <View style={styles.discountBadge}>
-            <Text style={styles.discountText}>
-              -{Math.round(product.discountPercentage)}%
+          {Math.round(product.discountPercentage) > 0 && (
+            <Text style={styles.originalPrice}>
+              {formatPrice(product.price)}
             </Text>
-          </View>
+          )}
+          <Text style={styles.discountedPrice}>{formattedPrice}</Text>
+          {Math.round(product.discountPercentage) > 0 && (
+            <View style={styles.discountBadge}>
+              <Text style={styles.discountText}>
+                -{Math.round(product.discountPercentage)}%
+              </Text>
+            </View>
+          )}
         </View>
 
         <Text style={styles.sectionTitle}>Descripción</Text>
